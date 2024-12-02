@@ -15,7 +15,7 @@
 #
 
 
-FROM ubuntu:20.04
+FROM --platform=linux/amd64 ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 SHELL ["/bin/bash", "-c"]
@@ -34,8 +34,11 @@ RUN apt-get update && \
     conda create -y -n chronos python=3.9 setuptools=58.0.4 && \
     echo "source activate chronos" > ~/.bashrc
 ENV PATH /usr/local/envs/chronos/bin:$PATH
-
+RUN pip install pip==23.0.1 && \
+    pip install pytorch-lightning==1.6.4
 RUN source activate chronos && \
-    pip install --no-cache-dir bigdl-chronos[pytorch]==2.4.0b20230522 matplotlib==3.7.1 notebook==6.4.12
+    pip install --no-cache-dir bigdl-chronos[pytorch]==2.4.0b20230522 \
+    matplotlib==3.7.1 notebook==6.4.12 pytorch-lightning==1.6.4 \
+    numpy==1.21.4 pandas==1.3.3
 
 RUN mkdir -p /workspace /dataset
