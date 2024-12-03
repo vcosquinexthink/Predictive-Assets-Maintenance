@@ -3,6 +3,6 @@ include .env
 build:
 	docker compose up --build
 
-build:
+logs:
 	docker logs -f  docker-compose-asset-maintenance-1
 
