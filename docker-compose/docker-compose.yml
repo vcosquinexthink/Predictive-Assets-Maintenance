@@ -1,5 +1,6 @@
 services:
   asset-maintenance:
+    container_name: asset-maintenance
     build:
       dockerfile: Dockerfile.asset_maintenance
     command: python -u AIOps_Asset_Maintenance.py
