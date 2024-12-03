@@ -4,5 +4,5 @@ build:
 	docker compose up --build
 
 logs:
-	docker logs -f  docker-compose-asset-maintenance-1
+	docker logs -f asset-maintenance
 
